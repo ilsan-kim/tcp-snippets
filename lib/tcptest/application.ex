@@ -9,7 +9,8 @@ defmodule Tcptest.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: Tcptest.Worker.start_link(arg)
-      Tcptest.Server
+      Tcptest.Server,
+      Tcptest.Smtp.Server
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
