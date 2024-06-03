@@ -26,8 +26,6 @@ defmodule Tcptest.Smtp.Handler do
   end
 
   def handle_msg(socket, msg) do
-    IO.puts(msg)
-
     cond do
       String.starts_with?(msg, ["HELO", "EHLO"]) ->
         handle_hello(socket, msg)
