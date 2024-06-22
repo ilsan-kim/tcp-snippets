@@ -31,12 +31,10 @@ defmodule Tcptest.LeakyBucket do
       [func | rest] ->
         func.()
         schedule_drain()
-        # Process.send_after(self(), :drain, 1000)
         {:noreply, %{queue: rest, capacity: state.capacity, level: max(state.level - 1, 0)}}
 
       [] ->
         schedule_drain()
-        # Process.send_after(self(), :drain, 1000)
         {:noreply, %{queue: [], capacity: state.capacity, level: max(state.level - 1, 0)}}
     end
   end
